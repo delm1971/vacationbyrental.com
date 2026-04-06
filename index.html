@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VRBO Vacation Packages | Book Your Perfect Getaway</title>
+  <meta name="description" content="Discover amazing vacation homes and getaway packages with VRBO. Find beach houses, cabins, condos, and family-friendly stays for your next trip." />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f7fb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .topbar {
+      background: #0b1f44;
+      color: #fff;
+      text-align: center;
+      font-size: 14px;
+      padding: 10px 15px;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(11,31,68,0.60), rgba(11,31,68,0.60)),
+      url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .hero-content {
+      max-width: 860px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(3px);
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 720px;
+      margin: 0 auto 28px;
+      color: #f3f4f6;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      padding: 16px 28px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: #ff7a00;
+      color: white;
+      box-shadow: 0 8px 22px rgba(255,122,0,0.30);
+    }
+
+    .btn-primary:hover {
+      background: #e76f00;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.22);
+    }
+
+    .trust-row {
+      margin-top: 18px;
+      font-size: 15px;
+      color: #e5e7eb;
+    }
+
+    .section {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 70px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 16px;
+      font-size: 36px;
+      color: #0b1f44;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 40px;
+      color: #6b7280;
+      font-size: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px 24px;
+      box-shadow: 0 10px 35px rgba(15, 23, 42, 0.08);
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+      color: #0b1f44;
+    }
+
+    .card p {
+      color: #4b5563;
+      font-size: 16px;
+    }
+
+    .destinations {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .destination-card {
+      position: relative;
+      height: 280px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    }
+
+    .destination-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .destination-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.10));
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      color: #fff;
+    }
+
+    .destination-overlay h4 {
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .destination-overlay p {
+      font-size: 14px;
+      color: #e5e7eb;
+    }
+
+    .highlight {
+      background: linear-gradient(135deg, #ffffff, #eef4ff);
+      border-radius: 24px;
+      padding: 50px 30px;
+      box-shadow: 0 14px 40px rgba(11,31,68,0.08);
+      text-align: center;
+    }
+
+    .highlight h2 {
+      font-size: 34px;
+      margin-bottom: 14px;
+      color: #0b1f44;
+    }
+
+    .highlight p {
+      max-width: 720px;
+      margin: 0 auto 24px;
+      font-size: 18px;
+      color: #4b5563;
+    }
+
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .review {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    .review-stars {
+      color: #ff7a00;
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .review p {
+      color: #4b5563;
+      margin-bottom: 14px;
+    }
+
+    .review strong {
+      color: #0b1f44;
+    }
+
+    .cta-banner {
+      background: #0b1f44;
+      color: #fff;
+      border-radius: 22px;
+      padding: 55px 25px;
+      text-align: center;
+      box-shadow: 0 15px 45px rgba(11,31,68,0.20);
+    }
+
+    .cta-banner h2 {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .cta-banner p {
+      font-size: 18px;
+      color: #e5e7eb;
+      max-width: 760px;
+      margin: 0 auto 24px;
+    }
+
+    .footer {
+      background: #07132c;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 28px 20px;
+      font-size: 14px;
+      margin-top: 50px;
+    }
+
+    .footer a {
+      color: #fff;
+    }
+
+    @media (max-width: 991px) {
+      .grid-3,
+      .destinations,
+      .reviews {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .grid-3,
+      .destinations,
+      .reviews {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 70px 20px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .section-title,
+      .highlight h2,
+      .cta-banner h2 {
+        font-size: 28px;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        max-width: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    Explore top vacation home destinations and discover your next unforgettable escape.
+  </div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Vacation Homes • Beach Escapes • Mountain Retreats • Family Getaways</div>
+      <h1>Book the Vacation Stay Everyone Wishes They Found First</h1>
+      <p>
+        Discover spacious vacation homes, relaxing beach houses, cozy cabins, and unforgettable getaways with VRBO vacation packages.
+      </p>
+
+      <div class="cta-group">
+        <a class="btn-primary" href="https://vrbo.com/affiliates/travel_deal_spot/vacationpackages" target="_blank" rel="noopener noreferrer">Browse VRBO Vacation Packages</a>
+        <a class="btn-secondary" href="https://vrbo.com/affiliates/travel_deal_spot/vacationpackages" target="_blank" rel="noopener noreferrer">Check Availability</a>
+      </div>
+
+      <div class="trust-row">
+        Ideal for families, couples, groups, and travelers who want more space, comfort, and privacy.
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Why Travelers Love Booking Vacation Homes</h2>
+    <p class="section-subtitle">
+      Skip the crowded hotel feel and enjoy more room, more flexibility, and a more memorable travel experience.
+    </p>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>More Space to Relax</h3>
+        <p>Enjoy full homes, extra bedrooms, living areas, kitchens, and outdoor space that make travel feel easier and more comfortable.</p>
+      </div>
+      <div class="card">
+        <h3>Great for Families & Groups</h3>
+        <p>Traveling with kids, friends, or extended family is easier when everyone can stay together in one place.</p>
+      </div>
+      <div class="card">
+        <h3>Unique Properties</h3>
+        <p>Choose from beach houses, mountain cabins, lakefront homes, condos, villas, and other one-of-a-kind vacation stays.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Popular Vacation Ideas</h2>
+    <p class="section-subtitle">
+      Get inspired by some of the most popular types of stays travelers are looking for right now.
+    </p>
+
+    <div class="destinations">
+      <div class="destination-card">
+        <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80" alt="Beach vacation rentals">
+        <div class="destination-overlay">
+          <div>
+            <h4>Beach Escapes</h4>
+            <p>Ocean views, sunshine, and relaxing coastal stays</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="destination-card">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80" alt="Mountain cabin getaways">
+        <div class="destination-overlay">
+          <div>
+            <h4>Mountain Cabins</h4>
+            <p>Fresh air, scenic views, and cozy retreats</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="destination-card">
+        <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80" alt="Luxury vacation homes">
+        <div class="destination-overlay">
+          <div>
+            <h4>Luxury Homes</h4>
+            <p>Upscale comfort for unforgettable vacations</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="destination-card">
+        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80" alt="Family friendly vacation rentals">
+        <div class="destination-overlay">
+          <div>
+            <h4>Family Getaways</h4>
+            <p>More room and convenience for everyone</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="highlight">
+      <h2>Find the Right Stay for Your Next Trip</h2>
+      <p>
+        Whether you are planning a weekend getaway, a beach vacation, a family reunion, or a longer escape, VRBO makes it easier to find a stay that fits your travel style.
+      </p>
+      <a class="btn-primary" href="https://vrbo.com/affiliates/travel_deal_spot/vacationpackages" target="_blank" rel="noopener noreferrer">See Vacation Options</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">What Makes Vacation Rentals So Popular?</h2>
+    <p class="section-subtitle">
+      Travelers often want privacy, flexibility, and a place that feels more like home while away.
+    </p>
+
+    <div class="reviews">
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <p>We wanted more room than a hotel and found exactly the kind of place that made the trip feel easy and comfortable.</p>
+        <strong>Perfect for family trips</strong>
+      </div>
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <p>Having a full home setup made our vacation feel more relaxed and flexible compared to a standard stay.</p>
+        <strong>Great for longer stays</strong>
+      </div>
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <p>The extra space, kitchen, and privacy made a huge difference. It felt like part of the vacation experience itself.</p>
+        <strong>Comfort and convenience</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="cta-banner">
+      <h2>Your Next Great Getaway Starts Here</h2>
+      <p>
+        Discover vacation homes and travel-ready stays that give you more room, more comfort, and more reasons to book your trip today.
+      </p>
+      <a class="btn-primary" href="https://vrbo.com/affiliates/travel_deal_spot/vacationpackages" target="_blank" rel="noopener noreferrer">Book Through VRBO Now</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 Vacation Travel Spot. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
